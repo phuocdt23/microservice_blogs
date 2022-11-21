@@ -1,12 +1,16 @@
 import React from 'react'
+import CommentCreate from './components/CommentCreate';
 import PostCreate from './components/PostCreate';
 import PostList from './components/PostList';
+import CommentList from './components/CommentList';
 function App() {
   return (
     <div>
-      <h1>Blog app</h1>
-      <PostCreate />
-      <PostList />
+      <div className='container'>
+        <h1>Create Post</h1>
+        <PostCreate />
+        <PostList />
+      </div>
     </div>
   );
 }
