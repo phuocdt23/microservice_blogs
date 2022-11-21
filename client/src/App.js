@@ -9,6 +9,7 @@ function App() {
       <div className='container'>
         <h1>Create Post</h1>
         <PostCreate />
+        <hr />
         <PostList />
       </div>
     </div>
