@@ -3,15 +3,18 @@ const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto')
 const cors = require('cors');
 const axios = require('axios');
+const { dir, log } = require('console');
 const posts = {};
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
 
+
 app.get('/posts', (req, res) => {
   res.send(posts).status(200);
 })
+
 app.post('/posts', async (req, res) => {
   const id = randomBytes(4).toString('hex');
   const { title } = req.body;
@@ -28,7 +31,11 @@ app.post('/posts', async (req, res) => {
   res.status(201).send(posts[id]);
 })
 
-
+app.post('/events', (req, res) => {
+  log('Event Received:');
+  dir(req.body);
+  res.send({ status: 'OK' })
+})
 
 app.listen(4000, () => {
   console.log('blog is listening on port 4000');
