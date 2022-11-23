@@ -22,7 +22,14 @@ app.post('/events', (req, res) => {
     const post = posts[postId];
     post.comments.push({ id, content, status });
   }
-  console.log(posts);
+
+  if (type === 'CommentUpdated') {
+    const { id, content, postId, status } = data;
+    const post = posts[postId];
+    const comment = post.comments.find(comment => comment.id === id);
+    comment.status = status;
+    comment.content = content;
+  }
 })
 app.listen(4002, () => {
   console.log('Listening on 4002');
