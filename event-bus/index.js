@@ -5,8 +5,13 @@ const axios = require('axios')
 const app = express()
 app.use(bodyParser.json())
 
+const events = [];
+
 app.post('/events', (req, res) => {
   const event = req.body;
+
+  events.push(event);
+
   console.log('Event Received Type:', event.type);
   console.log('Event Received Data:', event.data);
 
@@ -37,6 +42,9 @@ app.post('/events', (req, res) => {
   res.send({ status: 'OK' })
 })
 
+app.get('/events', (req, res) => {
+  res.send(events);
+})
 app.listen(4005, () => {
-  console.log('Listening on 4005')
+  console.log('event-bus listening on 4005')
 })
