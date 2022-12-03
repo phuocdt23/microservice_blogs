@@ -38,5 +38,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(4000, () => {
+  console.log('newest version');
   console.log('blog is listening on port 4000');
 })
