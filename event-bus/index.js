@@ -15,7 +15,7 @@ app.post('/events', (req, res) => {
   console.log('Event Received Type:', event.type);
   console.log('Event Received Data:', event.data);
 
-  axios.post('http://localhost:4000/events', event)
+  axios.post('http://pots-clusterip-srv:4000/events', event)
     .catch(
       (err) => {
         console.log(err.message);
